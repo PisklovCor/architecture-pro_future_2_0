@@ -1,0 +1,180 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="5.0" version="21.0.0" etag="drawio-diagram" type="device">
+  <diagram id="c4-container-level" name="C4 Container Level">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Users -->
+        <mxCell id="users" value="Пользователи&#xa;(Сотрудники, врачи, аналитики)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="200" width="30" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Partners -->
+        <mxCell id="partners" value="Партнёры&#xa;(Фармацевтические компании,&#xa;производители оборудования)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="400" width="30" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Medical Domain Boundary -->
+        <mxCell id="medical_domain_boundary" value="Медицинский домен" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="400" y="100" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="medical_services" value="Медицинские сервисы&#xa;Java/Spring Boot, PostgreSQL&#xa;Управление пациентами, клиниками,&#xa;персоналом, инвентаризацией" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="medical_domain_boundary">
+          <mxGeometry y="30" width="400" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ai_services" value="ИИ-сервисы&#xa;Python/FastAPI&#xa;Обработка медицинских данных,&#xa;генерация рекомендаций" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="medical_domain_boundary">
+          <mxGeometry y="110" width="400" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Financial Domain Boundary -->
+        <mxCell id="financial_domain_boundary" value="Финансовый домен" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="400" y="350" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="fintech_services" value="Финтех-сервисы&#xa;Golang/Java, PostgreSQL&#xa;Управление счетами, кредиты,&#xa;платежи, отчётность" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="financial_domain_boundary">
+          <mxGeometry y="30" width="400" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Analytics Domain Boundary -->
+        <mxCell id="analytics_domain_boundary" value="Аналитический домен" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="400" y="530" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="data_mart" value="Витрина данных&#xa;React/Node.js, Redis&#xa;Портал самообслуживания,&#xa;конструктор отчётов" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="analytics_domain_boundary">
+          <mxGeometry y="30" width="400" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="streaming_marts" value="Потоковые витрины&#xa;Apache Flink, Kafka Streams&#xa;Агрегация данных в реальном времени" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="analytics_domain_boundary">
+          <mxGeometry y="110" width="400" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Integration Domain Boundary -->
+        <mxCell id="integration_domain_boundary" value="Интеграционный домен" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="900" y="300" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="event_bus" value="Event Bus&#xa;Apache Kafka, Schema Registry&#xa;Центральная событийная шина, DLQ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;spacingLeft=10;" vertex="1" parent="integration_domain_boundary">
+          <mxGeometry y="30" width="400" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="acl" value="Антикоррупционный слой&#xa;Java/Spring Integration&#xa;Адаптеры для легаси-систем" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=10;" vertex="1" parent="integration_domain_boundary">
+          <mxGeometry y="110" width="400" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Platform Boundary -->
+        <mxCell id="data_platform_boundary" value="Платформа данных" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="100" width="500" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="data_lake" value="Data Lake&#xa;Apache Iceberg, S3&#xa;Хранилище сырых и обработанных данных" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="data_platform_boundary">
+          <mxGeometry y="30" width="500" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="stream_processing" value="Потоковая обработка&#xa;Apache Flink&#xa;Обработка событий в реальном времени" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="data_platform_boundary">
+          <mxGeometry y="110" width="500" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="batch_processing" value="Пакетная обработка&#xa;Apache Spark, Airflow&#xa;ETL-процессы, историческая загрузка" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;" vertex="1" parent="data_platform_boundary">
+          <mxGeometry y="190" width="500" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Infrastructure Boundary -->
+        <mxCell id="infrastructure_boundary" value="Инфраструктурные сервисы" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="450" width="500" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="api_gateway" value="API Gateway&#xa;Kong/AWS API Gateway&#xa;Маршрутизация, аутентификация, rate limiting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=10;" vertex="1" parent="infrastructure_boundary">
+          <mxGeometry y="30" width="500" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iam" value="IAM&#xa;Keycloak, OAuth2&#xa;Аутентификация, авторизация, управление ролями" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=10;" vertex="1" parent="infrastructure_boundary">
+          <mxGeometry y="90" width="500" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="observability" value="Observability&#xa;Prometheus, Grafana, Jaeger, ELK&#xa;Мониторинг, логирование, трейсинг" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=10;" vertex="1" parent="infrastructure_boundary">
+          <mxGeometry y="150" width="500" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="k8s" value="Kubernetes&#xa;K8s&#xa;Оркестрация контейнеров, автомасштабирование" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=10;" vertex="1" parent="infrastructure_boundary">
+          <mxGeometry y="210" width="500" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Legacy Systems -->
+        <mxCell id="legacy_dwh" value="Legacy DWH&#xa;SQL Server 2008&#xa;(на этапе миграции)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#ff0000;align=left;spacingLeft=10;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="600" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="legacy_camel" value="Legacy Camel&#xa;Apache Camel&#xa;(на этапе миграции)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#ff0000;align=left;spacingLeft=10;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="600" width="300" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Connections -->
+        <mxCell id="edge1" value="Использует" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="users" target="data_mart">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="Интегрируется" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="partners" target="api_gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="Маршрутизирует" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="api_gateway" target="fintech_services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="Маршрутизирует" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="api_gateway" target="medical_services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="Публикует события" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="medical_services" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="Публикует события" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="fintech_services" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="Подписывается" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="ai_services" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="Подписывается" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="streaming_marts" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="Читает события" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="stream_processing" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" value="Записывает данные" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="stream_processing" target="data_lake">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11" value="Записывает агрегации" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="streaming_marts" target="data_lake">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" value="Читает/записывает" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="batch_processing" target="data_lake">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge13" value="Читает для отчётов" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="data_mart" target="data_lake">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge14" value="Читает метрики" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="data_mart" target="streaming_marts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge15" value="Публикует события" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d6b656;" edge="1" parent="1" source="acl" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge16" value="Читает данные" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ff0000;dashed=1;" edge="1" parent="1" source="acl" target="legacy_dwh">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge17" value="Интегрируется" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ff0000;dashed=1;" edge="1" parent="1" source="acl" target="legacy_camel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge18" value="Проверяет доступ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" edge="1" parent="1" source="medical_services" target="iam">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge19" value="Проверяет доступ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" edge="1" parent="1" source="fintech_services" target="iam">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge20" value="Проверяет доступ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" edge="1" parent="1" source="data_mart" target="iam">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge21" value="Отправляет метрики" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" edge="1" parent="1" source="medical_services" target="observability">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge22" value="Отправляет метрики" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" edge="1" parent="1" source="fintech_services" target="observability">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge23" value="Отправляет метрики" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" edge="1" parent="1" source="event_bus" target="observability">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge24" value="Отправляет метрики" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" edge="1" parent="1" source="stream_processing" target="observability">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Title -->
+        <mxCell id="title" value="Целевая архитектура системы &quot;Будущее 2.0&quot; (горизонт 3 года)&#xa;Уровень контейнеров (C4 Model)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="600" height="60" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
